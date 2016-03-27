@@ -8,9 +8,9 @@ from kivy.graphics import Color, Ellipse, Line
 class MyPaintWidget(Widget):
 
     def on_touch_down(self, touch):
-        colour = (random(), random(), random())
+        colour = (random(), 1., 1.)
         with self.canvas:
-            Color(*colour) # Asterisk unpacks lazy tuple?
+            Color(*colour, mode = 'hsv') # Asterisk unpacks lazy tuple?
             d = 30.
             Ellipse(pos = (touch.x - d / 2, touch.y - d / 2), size = (d, d)) # Ellipse gets colour.
             touch.ud['line'] = Line(points = (touch.x, touch.y)) # Line gets colour? Must.
