@@ -10,13 +10,13 @@ class MyPaintWidget(Widget):
     def on_touch_down(self, touch):
         colour = (random(), random(), random())
         with self.canvas:
-            Color(*colour)
+            Color(*colour) # Asterisk unpacks lazy tuple?
             d = 30.
-            Ellipse(pos = (touch.x - d / 2, touch.y - d / 2), size = (d, d))
-            touch.ud['line'] = Line(points = (touch.x, touch.y))
+            Ellipse(pos = (touch.x - d / 2, touch.y - d / 2), size = (d, d)) # Ellipse gets colour.
+            touch.ud['line'] = Line(points = (touch.x, touch.y)) # Line gets colour? Must.
             
     def on_touch_move(self, touch):
-        touch.ud['line'].points += [touch.x, touch.y]
+        touch.ud['line'].points += [touch.x, touch.y] # Why brackets, not parentheses?
     
 class MyPaintApp(App):
     def build(self):
